@@ -24,6 +24,26 @@ x86_64 の Linux ホストなら `--platform linux/amd64` は不要。
 python3 hello.py # Python
 ```
 
+`strace` でシステムコールを観察する場合は **`linux/arm64` イメージ**が必要。
+
+`linux/amd64` を Apple Silicon Mac で動かすと QEMU/Rosetta がエミュレーション層に入るため、
+ptrace ベースの strace がシステムコールを捕捉できない（Docker オプションでは回避不可）。
+
+```sh
+# ARM64 用にビルド
+docker build --platform linux/arm64 -t linux-practice-arm64 .
+
+# 起動
+docker run --platform linux/arm64 -it --rm \
+  --cap-add=SYS_PTRACE \
+  --security-opt seccomp=unconfined \
+  linux-practice-arm64
+
+# コンテナ内
+strace -o hello.log ./hello
+cat hello.log
+```
+
 ## 注意
 
 `qemu-kvm` / `libvirt` は入れてあるが、VM の起動にはホストの `/dev/kvm` が必要で、
