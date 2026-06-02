@@ -11,4 +11,8 @@ RUN apt-get update && apt-get install -y \
         docker.io containerd libvirt-daemon-system \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /work
+COPY hello.go hello.py ./
+RUN go build -o hello hello.go
+
 CMD ["/bin/bash"]

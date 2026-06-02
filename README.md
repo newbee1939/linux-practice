@@ -15,6 +15,15 @@ docker run --platform linux/amd64 -it --rm linux-practice
 
 x86_64 の Linux ホストなら `--platform linux/amd64` は不要。
 
+## サンプルコードの実行
+
+コンテナ起動後、`/work` に移動済みなのでそのまま実行できる。
+
+```sh
+./hello          # Go
+python3 hello.py # Python
+```
+
 ## 注意
 
 `qemu-kvm` / `libvirt` は入れてあるが、VM の起動にはホストの `/dev/kvm` が必要で、
