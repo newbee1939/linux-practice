@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /work
-COPY hello.go hello.py ./
+COPY hello.go hello.py inf-loop.py ./
 RUN go build -o hello hello.go
 
 CMD ["/bin/bash"]
