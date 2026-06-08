@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /work
 COPY hello.go hello.py inf-loop.py ./
-RUN go build -o hello hello.go
+RUN chmod +x hello.py inf-loop.py \
+    && go build -o hello hello.go
 
 CMD ["/bin/bash"]
