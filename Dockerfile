@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /work
-COPY hello.go hello.py inf-loop.py syscall-inf-loop.py fork.py ./
+COPY hello.go hello.py inf-loop.py syscall-inf-loop.py fork.py intignore.py ./
 RUN chmod +x hello.py inf-loop.py syscall-inf-loop.py fork.py intignore.py \
     && go build -o hello hello.go intignore.py
 
