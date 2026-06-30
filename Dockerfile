@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /work
 COPY hello.go hello.py inf-loop.py syscall-inf-loop.py fork.py ./
-RUN chmod +x hello.py inf-loop.py syscall-inf-loop.py fork.py \
-    && go build -o hello hello.go
+RUN chmod +x hello.py inf-loop.py syscall-inf-loop.py fork.py intignore.py \
+    && go build -o hello hello.go intignore.py
 
 CMD ["/bin/bash"]
